@@ -34,6 +34,8 @@ for /f "tokens=1" %%d in (c:\adslip.txt) do (
     if /i "%%d" neq "%IP%" (
        echo %%d is not equal old ip
        set "ipchange=1"
+       echo %IP% > c:\adslip.txt
+
 
     ) 
 )
@@ -58,7 +60,7 @@ curl -X POST https://dnsapi.cn/Record.List -d "login_token=%API_TOKEN%&format=js
 echo null
 echo null
 
-curl -X POST https://dnsapi.cn/Record.Ddns -d "login_token=%API_TOKEN%&format=json&domain_id=%DOMAINID%&record_id=%RECORDID%&record_line_id=10%3D0&sub_domain=%SUBDOMAIN%"
+curl -X POST https://dnsapi.cn/Record.Ddns -d "login_token=%API_TOKEN%&format=json&domain_id=%DOMAINID%&record_id=%RECORDID%&record_line_id=10%%3D0&sub_domain=%SUBDOMAIN%"
 
 
 )
